@@ -156,19 +156,6 @@ class UserinfoController extends Controller
             return response()->json('You are not authorized to update this user info', 403);
         }
 
-        $validator = Validator::make($request->all(), [
-            'image_cid' => 'required',
-            'dob' => 'required',
-            'gender' => 'required|string|max:255',
-            'phonenumber' => 'required|string|max:255',
-            'house_type' => 'required|string|max:255',
-            'house_number' => 'required|string|max:255',
-            'street_number' => 'required|string|max:255',
-        ]);
-
-        if ($validator->fails()) {
-            return response()->json($validator->errors());       
-        }
 
         if (!$userinfo) {
             return response()->json('User info not found', 404);
